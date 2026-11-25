@@ -1,0 +1,774 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f3ed">
+  <meta name="description" content="東京湾の自然、ふなばしアンデルセン公園、地元の旬。船橋市の魅力とおでかけ情報をご紹介します。">
+  <title>船橋市のいいところ | 海の気配と、街のにぎわい。</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;600;700&family=Shippori+Mincho:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --paper: #f5f3ed;
+      --ink: #193d3b;
+      --muted: #6f7e77;
+      --green: #245c53;
+      --lime: #d7e5a5;
+      --orange: #e78353;
+      --line: rgba(25, 61, 59, .17);
+      --serif: "Shippori Mincho", "Noto Serif JP", serif;
+      --sans: "Noto Sans JP", sans-serif;
+      --latin: "DM Sans", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+    .wrap { width: min(1240px, calc(100% - 96px)); margin-inline: auto; }
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--green);
+      font: 600 11px/1 var(--latin);
+      letter-spacing: .17em;
+      text-transform: uppercase;
+    }
+    .eyebrow::before { content: ""; width: 28px; height: 1px; background: var(--orange); }
+
+    .site-header {
+      position: absolute;
+      z-index: 5;
+      inset: 0 0 auto;
+      color: white;
+    }
+    .header-inner {
+      width: min(1376px, calc(100% - 80px));
+      min-height: 92px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(255,255,255,.32);
+    }
+    .brand { display: flex; align-items: center; gap: 12px; }
+    .brand-mark {
+      display: grid;
+      width: 38px;
+      height: 38px;
+      place-items: center;
+      border: 1px solid rgba(255,255,255,.75);
+      border-radius: 50%;
+      font: 500 17px var(--serif);
+    }
+    .brand-name { font: 600 18px var(--serif); letter-spacing: .13em; }
+    .brand-sub { display: block; margin-top: 3px; font: 500 8px var(--latin); letter-spacing: .2em; opacity: .8; }
+    .nav-links { display: flex; align-items: center; gap: 34px; }
+    .nav-links a { font-size: 11px; letter-spacing: .08em; transition: opacity .2s; }
+    .nav-links a:hover { opacity: .68; }
+    .nav-links .nav-visit {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      padding: 14px 18px;
+      border: 1px solid rgba(255,255,255,.6);
+      border-radius: 2px;
+    }
+    .nav-visit span { font: 15px var(--latin); }
+    .menu-toggle { display: none; }
+
+    .hero {
+      position: relative;
+      min-height: 730px;
+      height: min(850px, 100svh);
+      color: white;
+      background: linear-gradient(180deg, #d6c6a4 0%, #b8c5b7 37%, #729995 38%, #477f7b 58%, #245c53 100%);
+      isolation: isolate;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(15, 42, 40, .72) 0%, rgba(15, 42, 40, .4) 39%, rgba(15,42,40,.05) 78%),
+        linear-gradient(0deg, rgba(13, 37, 35, .4), transparent 40%);
+    }
+    .hero-content {
+      width: min(1376px, calc(100% - 80px));
+      height: 100%;
+      min-height: 730px;
+      margin: auto;
+      padding-top: 92px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+    }
+    .hero-kicker {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      margin-bottom: 25px;
+      font-size: 11px;
+      letter-spacing: .2em;
+    }
+    .hero-kicker::before { content: ""; width: 36px; height: 1px; background: var(--lime); }
+    h1 {
+      max-width: 700px;
+      margin: 0;
+      font: 500 clamp(42px, 6vw, 78px)/1.62 var(--serif);
+      letter-spacing: .07em;
+    }
+    .hero-copy { margin: 15px 0 0 4px; font-size: 13px; line-height: 2.2; letter-spacing: .1em; }
+    .hero-actions { display: flex; align-items: center; gap: 24px; margin: 36px 0 0 4px; }
+    .button-light {
+      display: inline-flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 33px;
+      min-width: 184px;
+      padding: 16px 18px;
+      background: var(--paper);
+      color: var(--ink);
+      font-size: 11px;
+      transition: background .2s, transform .2s;
+    }
+    .button-light:hover { background: var(--lime); transform: translateY(-2px); }
+    .button-light span { font: 17px var(--latin); }
+    .hero-note { position: absolute; right: 0; bottom: 45px; font: 10px var(--latin); letter-spacing: .16em; writing-mode: vertical-rl; }
+    .hero-bottom {
+      position: absolute;
+      right: 0;
+      bottom: 43px;
+      left: 0;
+      width: min(1376px, calc(100% - 80px));
+      margin: auto;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      pointer-events: none;
+    }
+    .hero-bottom > * { pointer-events: auto; }
+    .scroll-cue { display: flex; align-items: center; gap: 14px; font: 9px var(--latin); letter-spacing: .17em; }
+    .scroll-cue::after { content: ""; width: 1px; height: 44px; background: rgba(255,255,255,.7); }
+    .hero-count { font: 11px var(--latin); letter-spacing: .13em; }
+    .hero-count b { font-size: 19px; font-weight: 400; }
+    .hero-count span { margin: 0 8px; opacity: .65; }
+
+    .intro { padding: 122px 0 132px; text-align: center; }
+    .intro .eyebrow { justify-content: center; }
+    .intro h2 {
+      margin: 30px 0 22px;
+      font: 500 clamp(28px, 3.5vw, 42px)/1.8 var(--serif);
+      letter-spacing: .08em;
+    }
+    .intro p { margin: 0; color: #64736d; font-size: 12px; line-height: 2.5; letter-spacing: .06em; }
+    .intro-stamp {
+      width: 76px;
+      height: 76px;
+      margin: 33px auto 0;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(36,92,83,.3);
+      border-radius: 50%;
+      color: var(--green);
+      font: 500 12px/1.5 var(--serif);
+      transform: rotate(-12deg);
+    }
+
+    .discover { padding: 0 0 130px; }
+    .section-heading { display: flex; align-items: end; justify-content: space-between; margin-bottom: 38px; }
+    .section-heading h2 {
+      margin: 16px 0 0;
+      font: 500 clamp(32px, 4vw, 48px)/1.25 var(--serif);
+      letter-spacing: .04em;
+    }
+    .section-heading h2 span { display: block; margin-top: 8px; color: var(--muted); font: 500 11px var(--latin); letter-spacing: .15em; }
+    .text-link { display: inline-flex; gap: 20px; align-items: center; padding-bottom: 9px; border-bottom: 1px solid var(--ink); font-size: 11px; }
+    .text-link span { font: 16px var(--latin); transition: transform .2s; }
+    .text-link:hover span { transform: translateX(4px); }
+    .place-grid { display: grid; grid-template-columns: 1.12fr .88fr .88fr; gap: 18px; }
+    .place-card { min-width: 0; }
+    .place-image { position: relative; display: block; overflow: hidden; aspect-ratio: 1 / 1.14; background: #d8ded3; }
+    .place-card:first-child .place-image { aspect-ratio: .87 / 1; }
+    .place-image img, .place-image svg { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .7s cubic-bezier(.2,.7,.2,1); }
+    .place-card:hover .place-image img, .place-card:hover .place-image svg { transform: scale(1.045); }
+    .place-number { position: absolute; top: 17px; left: 18px; color: white; font: 500 12px var(--latin); letter-spacing: .12em; text-shadow: 0 1px 5px #0005; }
+    .place-caption { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; padding: 18px 2px 0; }
+    .place-caption h3 { margin: 0; font: 500 19px var(--serif); letter-spacing: .06em; }
+    .place-caption p { margin: 7px 0 0; color: var(--muted); font-size: 10px; letter-spacing: .1em; }
+    .round-arrow {
+      flex: 0 0 auto;
+      display: grid;
+      place-items: center;
+      width: 34px;
+      height: 34px;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      font: 16px var(--latin);
+      transition: background .2s, color .2s;
+    }
+    .place-card:hover .round-arrow { background: var(--green); color: white; }
+
+    .feature {
+      position: relative;
+      min-height: 510px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      background: #dfe7d2;
+      overflow: hidden;
+    }
+    .feature-image { position: relative; min-height: 510px; }
+    .feature-image svg { width: 100%; height: 100%; display: block; object-fit: cover; }
+    .feature-content { align-self: center; max-width: 545px; padding: 60px 10% 60px 12%; }
+    .feature-content h2 { margin: 22px 0 19px; font: 500 clamp(30px, 3.8vw, 46px)/1.55 var(--serif); letter-spacing: .06em; }
+    .feature-content p { margin: 0; color: #586e64; font-size: 12px; line-height: 2.4; letter-spacing: .04em; }
+    .feature-content .text-link { margin-top: 31px; }
+    .feature-tag { display: inline-block; margin-top: 32px; padding: 7px 12px; border: 1px solid rgba(36,92,83,.32); border-radius: 30px; color: var(--green); font-size: 9px; letter-spacing: .14em; }
+
+    .town { padding: 120px 0; background: #e9ede3; }
+    .town .section-heading { margin-bottom: 22px; }
+    .town-intro { max-width: 700px; margin: 0 0 34px; color: var(--muted); font-size: 12px; line-height: 2.3; }
+    .town-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .town-card { min-height: 285px; display: flex; flex-direction: column; justify-content: space-between; padding: 27px; background: var(--paper); border: 1px solid var(--line); }
+    .town-card-label { color: var(--green); font: 600 9px var(--latin); letter-spacing: .16em; }
+    .town-card h3 { margin: 20px 0 12px; font: 500 20px/1.6 var(--serif); letter-spacing: .04em; }
+    .town-card p { margin: 0; color: var(--muted); font-size: 11px; line-height: 2.1; }
+    .town-card .text-link { align-self: flex-start; margin-top: 22px; }
+    .town-access { display: grid; grid-template-columns: 180px 1fr; gap: 24px; margin-top: 24px; padding: 22px 26px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .town-access h3 { margin: 0; font: 500 15px var(--serif); }
+    .town-access p { margin: 0; color: var(--muted); font-size: 11px; line-height: 2; }
+
+    .season { padding: 126px 0 132px; }
+    .season-layout { display: grid; grid-template-columns: .78fr 1.22fr; gap: 9%; align-items: center; }
+    .season-copy h2 { margin: 18px 0; font: 500 clamp(31px, 3.4vw, 43px)/1.6 var(--serif); letter-spacing: .08em; }
+    .season-copy p { margin: 0; color: var(--muted); font-size: 12px; line-height: 2.35; }
+    .season-copy .text-link { margin-top: 27px; }
+    .season-photo { position: relative; }
+    .season-illustration { display: block; width: 100%; height: 415px; }
+    .photo-label { position: absolute; right: -17px; bottom: 46px; padding: 17px 21px; background: var(--orange); color: white; font: 10px/1.7 var(--latin); letter-spacing: .1em; }
+
+    .visit-band {
+      background: var(--green);
+      color: white;
+      padding: 72px 0;
+    }
+    .visit-inner { display: flex; align-items: center; justify-content: space-between; gap: 35px; }
+    .visit-band .eyebrow { color: var(--lime); }
+    .visit-band h2 { margin: 14px 0 0; font: 500 clamp(25px, 3.3vw, 38px)/1.6 var(--serif); letter-spacing: .08em; }
+    .visit-band p { margin: 8px 0 0; color: rgba(255,255,255,.7); font-size: 11px; line-height: 2; }
+    .button-outline {
+      min-width: 190px;
+      display: inline-flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 28px;
+      padding: 17px 19px;
+      border: 1px solid rgba(255,255,255,.62);
+      font-size: 11px;
+      transition: background .2s, color .2s;
+    }
+    .button-outline:hover { background: var(--paper); color: var(--ink); }
+    .button-outline span { font: 17px var(--latin); }
+
+    footer { padding: 52px 0 28px; }
+    .footer-main { display: flex; justify-content: space-between; align-items: flex-start; padding-bottom: 45px; }
+    .footer-brand { color: var(--green); }
+    .footer-brand .brand-mark { border-color: var(--green); }
+    .footer-nav { display: flex; flex-wrap: wrap; gap: 26px; padding-top: 8px; }
+    .footer-nav a { font-size: 10px; color: #5d7069; }
+    .footer-bottom { display: flex; justify-content: space-between; border-top: 1px solid var(--line); padding-top: 20px; color: #839089; font: 9px var(--latin); letter-spacing: .1em; }
+
+    @media (max-width: 760px) {
+      .wrap { width: calc(100% - 42px); }
+      .header-inner, .hero-content, .hero-bottom { width: calc(100% - 42px); }
+      .header-inner { min-height: 72px; }
+      .brand-mark { width: 33px; height: 33px; font-size: 15px; }
+      .brand-name { font-size: 16px; }
+      .menu-toggle {
+        display: flex;
+        width: 42px;
+        height: 42px;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 6px;
+        border: 1px solid rgba(255,255,255,.55);
+        background: transparent;
+        color: white;
+      }
+      .menu-toggle i { width: 15px; height: 1px; background: currentColor; }
+      .nav-links {
+        position: absolute;
+        top: 71px;
+        right: 0;
+        left: 0;
+        display: none;
+        align-items: stretch;
+        gap: 0;
+        padding: 12px 21px 20px;
+        background: rgba(25,61,59,.97);
+      }
+      .nav-links.is-open { display: flex; flex-direction: column; }
+      .nav-links a { padding: 14px 3px; border-bottom: 1px solid rgba(255,255,255,.17); }
+      .nav-links .nav-visit { justify-content: space-between; margin-top: 12px; padding: 14px 13px; border: 1px solid rgba(255,255,255,.55); }
+      .hero { min-height: 680px; height: 88svh; background-position: 55% center; }
+      .hero-content { min-height: 680px; padding-top: 72px; }
+      .hero-kicker { font-size: 9px; }
+      h1 { font-size: clamp(39px, 10vw, 57px); line-height: 1.72; }
+      .hero-copy { font-size: 11px; }
+      .hero-actions { margin-top: 27px; }
+      .hero-note { bottom: 35px; font-size: 8px; }
+      .hero-bottom { bottom: 33px; }
+      .intro { padding: 83px 0 90px; }
+      .intro h2 { font-size: 27px; line-height: 1.85; }
+      .intro p { font-size: 10px; }
+      .discover { padding-bottom: 88px; }
+      .section-heading { align-items: flex-start; flex-direction: column; gap: 20px; margin-bottom: 24px; }
+      .section-heading h2 { font-size: 36px; }
+      .place-grid { grid-template-columns: 1fr 1fr; gap: 26px 12px; }
+      .place-card:first-child { grid-column: 1 / -1; }
+      .place-card:first-child .place-image { aspect-ratio: 1.12 / 1; }
+      .place-image { aspect-ratio: .86 / 1; }
+      .place-caption { padding-top: 12px; }
+      .place-caption h3 { font-size: 15px; }
+      .place-caption p { font-size: 9px; }
+      .round-arrow { width: 29px; height: 29px; font-size: 14px; }
+      .feature { grid-template-columns: 1fr; }
+      .feature-image { min-height: 0; height: 300px; }
+      .feature-content { padding: 44px 25px 48px; }
+      .feature-content h2 { font-size: 34px; }
+      .feature-content p { font-size: 11px; }
+      .town { padding: 84px 0; }
+      .town .section-heading { margin-bottom: 18px; }
+      .town-intro { font-size: 10px; }
+      .town-grid { grid-template-columns: 1fr; gap: 11px; }
+      .town-card { min-height: 0; padding: 22px; }
+      .town-card h3 { margin-top: 14px; font-size: 18px; }
+      .town-access { grid-template-columns: 1fr; gap: 10px; margin-top: 17px; padding: 18px 4px; }
+      .season { padding: 87px 0 98px; }
+      .season-layout { grid-template-columns: 1fr; gap: 31px; }
+      .season-copy h2 { font-size: 34px; }
+      .season-illustration { height: 300px; }
+      .photo-label { right: -7px; bottom: 44px; padding: 12px 15px; }
+      .visit-band { padding: 49px 0; }
+      .visit-inner { align-items: flex-start; flex-direction: column; gap: 25px; }
+      .visit-band h2 { font-size: 27px; }
+      .visit-band p { font-size: 10px; }
+      footer { padding-top: 38px; }
+      .footer-main { flex-direction: column; gap: 30px; padding-bottom: 32px; }
+      .footer-nav { gap: 17px 23px; }
+      .footer-bottom { gap: 14px; font-size: 8px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header" id="top">
+    <div class="header-inner">
+      <a class="brand" href="#top" aria-label="船橋市のいいところ トップ">
+        <span class="brand-mark">船</span>
+        <span class="brand-name">船橋<span class="brand-sub">FUNABASHI CITY GUIDE</span></span>
+      </a>
+      <button class="menu-toggle" type="button" aria-label="メニューを開く" aria-expanded="false" aria-controls="primary-nav">
+        <i></i><i></i>
+      </button>
+      <nav class="nav-links" id="primary-nav" aria-label="メインメニュー">
+        <a href="#about">船橋のこと</a>
+        <a href="#spots">見どころ</a>
+        <a href="#town">まちの寄り道</a>
+        <a href="#season">船橋の味</a>
+        <a class="nav-visit" href="#visit">おでかけ情報 <span>↗</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-content">
+        <div class="hero-kicker">FUNABASHI, CHIBA · TOKYO BAY</div>
+        <h1 id="hero-title">海の気配と、<br>街のにぎわい。</h1>
+        <p class="hero-copy">東京湾の自然も、街なかの楽しみも。<br>今日は船橋の、好きなところを見つけよう。</p>
+        <div class="hero-actions">
+          <a class="button-light" href="#about">船橋の魅力を見る <span>↘</span></a>
+        </div>
+        <div class="hero-note">CHIBA · JAPAN</div>
+      </div>
+      <div class="hero-bottom">
+        <div class="scroll-cue">SCROLL TO DISCOVER</div>
+        <div class="hero-count">FUNABASHI <span>·</span> CHIBA</div>
+      </div>
+    </section>
+
+    <section class="intro wrap" id="about">
+      <div class="eyebrow">WELCOME TO FUNABASHI</div>
+      <h2>街のすぐそばに、海と緑。</h2>
+      <p>東京湾に面した船橋には、三番瀬の自然や、季節の花々に出会える公園があります。<br>
+        にぎやかな街歩きも、地元のおいしいもの探しも。気分に合わせて楽しめるまちです。</p>
+      <div class="intro-stamp" aria-label="海と街のまち">海と<br>街のまち</div>
+    </section>
+
+    <section class="discover wrap" id="spots">
+      <div class="section-heading">
+        <div>
+          <div class="eyebrow">FIND YOUR FUNABASHI</div>
+          <h2>船橋で、出会いたい景色。<span>PLACES TO FALL IN LOVE WITH</span></h2>
+        </div>
+        <a class="text-link" href="#visit">おでかけ情報 <span>→</span></a>
+      </div>
+      <div class="place-grid">
+        <div class="place-card">
+          <a class="place-image" href="https://www.sambanze.jp/" target="_blank" rel="noopener noreferrer" aria-label="ふなばし三番瀬環境学習館の公式サイトを開く">
+            <svg viewBox="0 0 600 700" role="img" aria-labelledby="sanbanze-art-title sanbanze-art-description" xmlns="http://www.w3.org/2000/svg">
+              <title id="sanbanze-art-title">三番瀬の海辺のイラスト</title>
+              <desc id="sanbanze-art-description">広い空と東京湾、干潟に集まる小さな水鳥を描いたオリジナルイラストです。</desc>
+              <defs>
+                <linearGradient id="sanbanze-sky" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#b9d8d4"/><stop offset="1" stop-color="#f0dfb8"/></linearGradient>
+                <linearGradient id="sanbanze-sea" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#679995"/><stop offset="1" stop-color="#2f6867"/></linearGradient>
+              </defs>
+              <rect width="600" height="700" fill="url(#sanbanze-sky)"/>
+              <circle cx="465" cy="132" r="52" fill="#f3cf86"/>
+              <path d="M0 323 63 270 112 309 182 229 242 310 312 258 370 320 454 243 522 307 600 254V400H0Z" fill="#82978b"/>
+              <path d="M0 357 70 302 118 336 182 265 246 338 310 294 372 347 456 278 520 335 600 286V410H0Z" fill="#eee5d3"/>
+              <path d="M0 380Q112 363 225 382T450 377T600 383V700H0Z" fill="url(#sanbanze-sea)"/>
+              <path d="M0 501Q130 472 245 505T480 493T600 504V700H0Z" fill="#bbab83"/>
+              <path d="M0 545Q156 517 292 547T600 542V700H0Z" fill="#829276"/>
+              <g fill="none" stroke="#d7e4d1" stroke-width="5" opacity=".8">
+                <path d="M40 435Q127 420 203 437"/><path d="M350 455Q431 439 556 455"/>
+                <path d="M103 479Q176 465 248 479"/><path d="M386 518Q470 505 572 519"/>
+              </g>
+              <g fill="#f5f0df">
+                <path d="M363 473q13-12 26 0-13 12-26 0m11-2 8-8 7 9"/>
+                <path d="M420 490q11-10 22 0-11 10-22 0m9-2 7-7 6 8"/>
+                <path d="M475 468q10-9 20 0-10 9-20 0m8-2 6-6 6 7"/>
+              </g>
+              <g stroke="#456d51" stroke-width="7" stroke-linecap="round">
+                <path d="M54 615q-2-75 7-123M77 623q2-63 25-104M114 630q-1-68 5-105"/>
+                <path d="M521 619q-4-72 7-118M548 625q0-60 22-97"/>
+              </g>
+              <g fill="#d5b36f"><circle cx="61" cy="511" r="8"/><circle cx="100" cy="532" r="7"/><circle cx="528" cy="514" r="8"/><circle cx="564" cy="541" r="7"/></g>
+            </svg>
+            <span class="place-number">01 / SANBANZE</span>
+          </a>
+          <div class="place-caption">
+            <div>
+              <h3>三番瀬の干潟</h3>
+              <p>東京湾に残る豊かな自然</p>
+            </div>
+            <a class="round-arrow" href="https://www.google.com/maps/search/?api=1&amp;query=%E4%B8%89%E7%95%AA%E7%80%AC" target="_blank" rel="noopener noreferrer" aria-label="三番瀬を地図で開く">↗</a>
+          </div>
+        </div>
+        <div class="place-card">
+          <a class="place-image" href="https://www.park-funabashi.or.jp/and/" target="_blank" rel="noopener noreferrer" aria-label="ふなばしアンデルセン公園の公式サイトを開く">
+            <svg viewBox="0 0 600 700" role="img" aria-labelledby="park-art-title park-art-description" xmlns="http://www.w3.org/2000/svg">
+              <title id="park-art-title">アンデルセン公園の風車と花壇のイラスト</title>
+              <desc id="park-art-description">青空の下、デンマーク風の風車と色とりどりの花が咲く公園を描いたオリジナルイラストです。</desc>
+              <defs>
+                <linearGradient id="park-sky" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#b8d9d4"/><stop offset="1" stop-color="#f1dfb8"/></linearGradient>
+                <linearGradient id="park-grass" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#8ba979"/><stop offset="1" stop-color="#557c5d"/></linearGradient>
+              </defs>
+              <rect width="600" height="700" fill="url(#park-sky)"/>
+              <circle cx="489" cy="105" r="44" fill="#f2d18a"/>
+              <g fill="#f8f4e7" opacity=".8"><ellipse cx="112" cy="143" rx="43" ry="15"/><ellipse cx="146" cy="135" rx="31" ry="21"/><ellipse cx="177" cy="145" rx="38" ry="13"/></g>
+              <path d="M0 355Q132 283 243 338T455 320T600 342V700H0Z" fill="#a9c399"/>
+              <path d="M0 422Q131 361 244 409T454 389T600 406V700H0Z" fill="url(#park-grass)"/>
+              <g>
+                <path d="M370 412 388 230 462 230 481 412Z" fill="#a85a40"/>
+                <path d="M378 245 425 193 473 245Z" fill="#73483a"/>
+                <path d="M386 286H466M381 344H472" stroke="#f0dfbd" stroke-width="12"/>
+                <rect x="408" y="338" width="38" height="74" rx="19" fill="#594438"/>
+                <g transform="translate(425 218)" fill="#f5ead0" stroke="#795845" stroke-width="5">
+                  <path d="M-7-7-18-124 0-154 18-124 7-7Z"/>
+                  <path d="M-7-7-18-124 0-154 18-124 7-7Z" transform="rotate(90)"/>
+                  <path d="M-7-7-18-124 0-154 18-124 7-7Z" transform="rotate(180)"/>
+                  <path d="M-7-7-18-124 0-154 18-124 7-7Z" transform="rotate(270)"/>
+                </g>
+                <circle cx="425" cy="218" r="14" fill="#ca875a" stroke="#795845" stroke-width="5"/>
+              </g>
+              <path d="M0 558Q130 501 260 542T520 529T600 548V700H0Z" fill="#6c8c62"/>
+              <path d="M0 700Q164 610 320 700Z" fill="#ddc59b"/>
+              <g fill="#f5d274"><circle cx="62" cy="560" r="11"/><circle cx="120" cy="588" r="9"/><circle cx="188" cy="548" r="10"/><circle cx="253" cy="593" r="9"/><circle cx="317" cy="558" r="11"/><circle cx="513" cy="567" r="10"/></g>
+              <g fill="#dc8d7a"><circle cx="88" cy="608" r="10"/><circle cx="157" cy="565" r="9"/><circle cx="221" cy="622" r="11"/><circle cx="286" cy="574" r="9"/><circle cx="477" cy="612" r="10"/><circle cx="553" cy="600" r="9"/></g>
+              <g fill="#f7f0dc"><circle cx="42" cy="633" r="8"/><circle cx="132" cy="638" r="8"/><circle cx="342" cy="608" r="9"/><circle cx="430" cy="575" r="8"/><circle cx="530" cy="645" r="8"/></g>
+            </svg>
+            <span class="place-number">02 / PARK</span>
+          </a>
+          <div class="place-caption">
+            <div>
+              <h3>ふなばしアンデルセン公園</h3>
+              <p>花と緑に親しむひととき</p>
+            </div>
+            <a class="round-arrow" href="https://www.google.com/maps/search/?api=1&amp;query=%E3%81%B5%E3%81%AA%E3%81%B0%E3%81%97%E3%82%A2%E3%83%B3%E3%83%87%E3%83%AB%E3%82%BB%E3%83%B3%E5%85%AC%E5%9C%92" target="_blank" rel="noopener noreferrer" aria-label="ふなばしアンデルセン公園を地図で開く">↗</a>
+          </div>
+        </div>
+        <div class="place-card">
+          <a class="place-image" href="https://www.city.funabashi.lg.jp/" target="_blank" rel="noopener noreferrer" aria-label="船橋市公式サイトを開く">
+            <svg viewBox="0 0 600 700" role="img" aria-labelledby="produce-art-title produce-art-description" xmlns="http://www.w3.org/2000/svg">
+              <title id="produce-art-title">船橋の農産物をイメージした野菜のイラスト</title>
+              <desc id="produce-art-description">小松菜の葉、トマト、梨などを並べたオリジナルイラストです。</desc>
+              <defs>
+                <linearGradient id="produce-bg" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#e5eadb"/><stop offset="1" stop-color="#c5d4bd"/></linearGradient>
+                <linearGradient id="tomato" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ee9c73"/><stop offset="1" stop-color="#c95948"/></linearGradient>
+              </defs>
+              <rect width="600" height="700" fill="url(#produce-bg)"/>
+              <circle cx="101" cy="115" r="48" fill="#f5edda" opacity=".76"/>
+              <ellipse cx="303" cy="593" rx="252" ry="49" fill="#a9825e"/>
+              <path d="M55 553Q80 465 150 451Q223 465 239 561L229 592H65Z" fill="#eee2c9" stroke="#c6ad85" stroke-width="7"/>
+              <path d="M361 566Q378 462 462 450Q543 470 554 567L539 592H376Z" fill="#eee2c9" stroke="#c6ad85" stroke-width="7"/>
+              <g fill="#71945e" stroke="#456b4c" stroke-width="5">
+                <path d="M260 494Q200 425 237 335Q292 366 292 459Q286 351 365 291Q404 369 321 476Q394 382 465 403Q447 481 334 516Z"/>
+                <path d="M289 494Q268 410 307 364Q347 416 321 492M322 496Q359 416 421 400Q417 468 344 513"/>
+              </g>
+              <g fill="none" stroke="#d1dca8" stroke-width="8" stroke-linecap="round">
+                <path d="M294 489Q271 399 250 356M316 492Q332 386 359 316M331 496Q379 434 431 416"/>
+              </g>
+              <g>
+                <path d="M107 386Q88 374 92 349Q104 328 130 342Q150 322 169 342Q196 337 204 361Q206 389 184 402Q146 416 107 386Z" fill="url(#tomato)"/>
+                <path d="M144 345 133 327 152 338 169 322 168 343 189 338 174 353" fill="#56784d" stroke="#45663f" stroke-width="5" stroke-linejoin="round"/>
+                <path d="M183 482Q179 458 199 443" fill="none" stroke="#74533b" stroke-width="10" stroke-linecap="round"/>
+                <path d="M170 485Q146 459 160 432Q183 438 190 459Q200 430 226 433Q232 463 204 485Z" fill="#78955f" stroke="#506f4a" stroke-width="4"/>
+              </g>
+              <g fill="#d8bb75">
+                <circle cx="93" cy="538" r="6"/><circle cx="129" cy="516" r="6"/><circle cx="172" cy="548" r="6"/><circle cx="211" cy="529" r="6"/>
+                <circle cx="401" cy="533" r="6"/><circle cx="449" cy="518" r="6"/><circle cx="495" cy="548" r="6"/>
+              </g>
+            </svg>
+            <span class="place-number">03 / LOCAL FOOD</span>
+          </a>
+          <div class="place-caption">
+            <div>
+              <h3>船橋の旬を味わう</h3>
+              <p>小松菜や梨など地元の味</p>
+            </div>
+            <a class="round-arrow" href="https://www.google.com/maps/search/?api=1&amp;query=%E8%88%B9%E6%A9%8B%E5%B8%82+%E7%9B%B4%E5%A3%B2%E6%89%80" target="_blank" rel="noopener noreferrer" aria-label="船橋市の直売所を地図で探す">↗</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="feature" aria-labelledby="feature-title">
+      <div class="feature-image">
+        <svg viewBox="0 0 1000 800" role="img" aria-labelledby="bay-art-title bay-art-description" xmlns="http://www.w3.org/2000/svg">
+          <title id="bay-art-title">東京湾の干潟のイラスト</title>
+          <desc id="bay-art-description">夕空の下、遠くの街並みと水辺、浅瀬に集まる鳥を描いたオリジナルイラストです。</desc>
+          <defs>
+            <linearGradient id="bay-sky" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#b9c9c0"/><stop offset=".58" stop-color="#edc58e"/><stop offset="1" stop-color="#d28d68"/></linearGradient>
+            <linearGradient id="bay-water" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#587f7b"/><stop offset="1" stop-color="#294f54"/></linearGradient>
+          </defs>
+          <rect width="1000" height="800" fill="url(#bay-sky)"/>
+          <circle cx="760" cy="270" r="92" fill="#f5d795" opacity=".86"/>
+          <path d="M0 422 73 386 132 403 210 371 276 406 354 382 423 408 501 376 578 401 650 380 721 404 802 373 881 402 1000 370V520H0Z" fill="#596b62"/>
+          <g fill="#405950">
+            <path d="M73 392V330H123V397M139 400V346H202V402M247 402V320H301V405M325 405V359H381V411M443 401V327H500V404M542 407V346H612V411M657 407V320H714V411M752 406V350H813V411M858 407V322H911V411"/>
+            <path d="M0 417H1000V445H0Z"/>
+          </g>
+          <path d="M0 440Q183 421 350 442T690 437T1000 441V800H0Z" fill="url(#bay-water)"/>
+          <path d="M0 564Q158 520 336 555T685 545T1000 558V800H0Z" fill="#b9a17c"/>
+          <path d="M0 626Q191 580 374 620T718 611T1000 624V800H0Z" fill="#79896f"/>
+          <g fill="none" stroke="#d4c095" stroke-width="8" opacity=".8">
+            <path d="M34 490Q158 474 276 489M379 505Q506 484 629 500M700 477Q810 463 967 484"/>
+            <path d="M76 544Q192 529 282 543M487 561Q605 543 744 559M786 532Q872 519 966 533"/>
+          </g>
+          <g fill="#e7dfc9">
+            <path d="M584 520q17-16 34 0-17 16-34 0m14-3 10-10 10 11"/>
+            <path d="M640 534q13-12 26 0-13 12-26 0m10-2 8-8 8 9"/>
+            <path d="M701 516q12-11 24 0-12 11-24 0m9-2 7-7 7 8"/>
+          </g>
+          <g stroke="#496a4f" stroke-width="9" stroke-linecap="round">
+            <path d="M56 732q-4-94 10-154M94 753q4-87 34-139M152 747q-4-73 7-129"/>
+            <path d="M848 744q-2-86 12-142M894 755q2-80 29-134M952 748q-1-69 11-120"/>
+          </g>
+          <g fill="#d7b76f"><circle cx="66" cy="587" r="10"/><circle cx="119" cy="612" r="9"/><circle cx="866" cy="603" r="10"/><circle cx="927" cy="632" r="9"/></g>
+        </svg>
+      </div>
+      <div class="feature-content">
+        <div class="eyebrow">A NATURAL TREASURE BY THE CITY</div>
+        <h2 id="feature-title">街のそばで出会う、<br>三番瀬の自然。</h2>
+        <p>東京湾に広がる三番瀬は、多くの生きものが息づく干潟。<br>季節によって訪れる水鳥など、豊かな自然を感じられます。<br>見学できる場所や開館情報を確認してお出かけください。</p>
+        <a class="text-link" href="https://www.city.funabashi.lg.jp/" target="_blank" rel="noopener noreferrer">船橋市の公式サイト <span>↗</span></a>
+        <div class="feature-tag">MEET THE NATURE OF TOKYO BAY</div>
+      </div>
+    </section>
+
+    <section class="town" id="town" aria-labelledby="town-title">
+      <div class="wrap">
+        <div class="section-heading">
+          <div>
+            <div class="eyebrow">MORE TO EXPLORE</div>
+            <h2 id="town-title">もう少し知りたい、<br>船橋の寄り道。<span>LOCAL PLACES &amp; STORIES</span></h2>
+          </div>
+        </div>
+        <p class="town-intro">海辺の自然、公園、駅前のにぎわい。少し足をのばすと、船橋ならではの場所に出会えます。気になるスポットを見つけたら、営業日や利用案内を確認して出かけましょう。</p>
+        <div class="town-grid">
+          <article class="town-card">
+            <div>
+              <div class="town-card-label">01 / LEARN BY THE SEA</div>
+              <h3>ふなばし三番瀬環境学習館</h3>
+              <p>三番瀬の干潟や、そこに暮らす生きものについて学べる施設。展示や体験の内容、開館日を確認してから訪れるのがおすすめです。</p>
+            </div>
+            <a class="text-link" href="https://www.google.com/maps/search/?api=1&amp;query=%E3%81%B5%E3%81%AA%E3%81%B0%E3%81%97%E4%B8%89%E7%95%AA%E7%80%AC%E7%92%B0%E5%A2%83%E5%AD%A6%E7%BF%92%E9%A4%A8" target="_blank" rel="noopener noreferrer">場所を地図で見る <span>↗</span></a>
+          </article>
+          <article class="town-card">
+            <div>
+              <div class="town-card-label">02 / CITY MARKET</div>
+              <h3>船橋市地方卸売市場</h3>
+              <p>青果や水産物などが集まる船橋市の市場。見学やイベントの実施状況は、訪問前に市場の公式案内で確認しましょう。</p>
+            </div>
+            <a class="text-link" href="https://www.google.com/maps/search/?api=1&amp;query=%E8%88%B9%E6%A9%8B%E5%B8%82%E5%9C%B0%E6%96%B9%E5%8D%B8%E5%A3%B2%E5%B8%82%E5%A0%B4" target="_blank" rel="noopener noreferrer">場所を地図で見る <span>↗</span></a>
+          </article>
+          <article class="town-card">
+            <div>
+              <div class="town-card-label">03 / LOCAL HISTORY</div>
+              <h3>意富比神社（船橋大神宮）</h3>
+              <p>船橋のまちに根づく神社を訪ねて、駅前とは少し違う静かな時間を。参拝の際は境内の案内に従ってお過ごしください。</p>
+            </div>
+            <a class="text-link" href="https://www.google.com/maps/search/?api=1&amp;query=%E6%84%8F%E5%AF%8C%E6%AF%94%E7%A5%9E%E7%A4%BE%EF%BC%88%E8%88%B9%E6%A9%8B%E5%A4%A7%E7%A5%9E%E5%AE%AE%EF%BC%89" target="_blank" rel="noopener noreferrer">場所を地図で見る <span>↗</span></a>
+          </article>
+        </div>
+        <div class="town-access">
+          <h3>おでかけ前の交通チェック</h3>
+          <p>船橋市内ではJR・東武・京成などの路線が利用できます。スポットごとに最寄り駅やバスの経路が異なるため、出発前に最新のアクセス・施設情報をご確認ください。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="season wrap" id="season">
+      <div class="season-layout">
+        <div class="season-copy">
+          <div class="eyebrow">TASTE THE SEASON</div>
+          <h2>船橋の旬を、<br>食卓から楽しむ。</h2>
+          <p>小松菜や梨をはじめ、船橋には地元で育った味覚もいろいろ。<br>直売所やお店を訪ねて、その季節ならではのおいしさを探してみませんか。</p>
+          <a class="text-link" href="https://www.google.com/maps/search/?api=1&amp;query=%E8%88%B9%E6%A9%8B%E5%B8%82+%E8%BE%B2%E7%94%A3%E7%89%A9+%E7%9B%B4%E5%A3%B2%E6%89%80" target="_blank" rel="noopener noreferrer">近くの直売所を探す <span>↗</span></a>
+        </div>
+        <div class="season-photo">
+          <svg class="season-illustration" viewBox="0 0 800 520" role="img" aria-labelledby="season-art-title season-art-description" xmlns="http://www.w3.org/2000/svg">
+            <title id="season-art-title">梨と小松菜のオリジナルイラスト</title>
+            <desc id="season-art-description">木のテーブルに並んだみずみずしい梨と、葉の広がる小松菜を描いています。</desc>
+            <defs>
+              <linearGradient id="season-wall" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#e6eadb"/>
+                <stop offset="1" stop-color="#c9d5bd"/>
+              </linearGradient>
+              <linearGradient id="season-table" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#c99562"/>
+                <stop offset="1" stop-color="#a96f49"/>
+              </linearGradient>
+              <linearGradient id="pear-skin" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#f8dfa0"/>
+                <stop offset=".55" stop-color="#e8bd62"/>
+                <stop offset="1" stop-color="#c99143"/>
+              </linearGradient>
+              <linearGradient id="leaf" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#8ba873"/>
+                <stop offset="1" stop-color="#456c4c"/>
+              </linearGradient>
+            </defs>
+            <rect width="800" height="520" fill="url(#season-wall)"/>
+            <circle cx="112" cy="104" r="44" fill="#f3edda" opacity=".8"/>
+            <path d="M0 344Q137 305 270 341T538 329T800 344V520H0Z" fill="#d5ddc8"/>
+            <path d="M0 376H800V520H0Z" fill="url(#season-table)"/>
+            <path d="M0 401H800M0 481H800" stroke="#8f5e40" stroke-width="5" opacity=".35"/>
+            <g opacity=".18" stroke="#f8e3bf" stroke-width="3">
+              <path d="M52 429H302M391 451H725M115 495H360M540 420H762"/>
+            </g>
+            <ellipse cx="273" cy="395" rx="162" ry="28" fill="#68472f" opacity=".2"/>
+            <ellipse cx="552" cy="427" rx="161" ry="27" fill="#68472f" opacity=".22"/>
+            <g>
+              <path d="M247 168Q239 202 220 225Q181 266 184 321Q187 379 245 397Q280 409 315 389Q367 359 355 304Q350 268 317 228Q297 203 295 168Z" fill="url(#pear-skin)" stroke="#b37c3f" stroke-width="5"/>
+              <path d="M270 176Q271 145 300 123" fill="none" stroke="#73513a" stroke-width="12" stroke-linecap="round"/>
+              <path d="M282 151Q306 116 345 127Q332 162 290 165Z" fill="#64804d" stroke="#47643e" stroke-width="4"/>
+              <g fill="#b67b39" opacity=".58">
+                <circle cx="220" cy="277" r="3"/><circle cx="245" cy="250" r="3"/><circle cx="324" cy="280" r="3"/>
+                <circle cx="211" cy="326" r="3"/><circle cx="276" cy="303" r="3"/><circle cx="334" cy="343" r="3"/>
+                <circle cx="251" cy="370" r="3"/><circle cx="307" cy="356" r="3"/><circle cx="285" cy="227" r="3"/>
+              </g>
+              <path d="M220 246Q205 278 210 306" fill="none" stroke="#fff1c8" stroke-width="10" stroke-linecap="round" opacity=".56"/>
+            </g>
+            <g transform="translate(0 5)">
+              <path d="M484 367Q432 306 447 241Q495 260 516 322Q493 255 542 196Q581 249 548 323Q579 249 640 237Q641 304 573 353Q630 299 688 314Q674 366 591 388Z" fill="url(#leaf)" stroke="#3d6244" stroke-width="5" stroke-linejoin="round"/>
+              <path d="M520 383Q495 314 457 256M541 381Q547 288 544 213M556 384Q592 310 628 253M569 386Q625 346 675 329" fill="none" stroke="#c6d49c" stroke-width="9" stroke-linecap="round"/>
+              <path d="M471 389Q445 342 462 302Q498 324 505 378M516 392Q501 332 521 281Q556 320 545 386M567 393Q586 337 627 315Q635 359 589 393" fill="#73945e" stroke="#486c49" stroke-width="4"/>
+              <path d="M484 385 468 320M530 386 530 299M576 386 615 331" fill="none" stroke="#d4dda8" stroke-width="6" stroke-linecap="round"/>
+              <path d="M455 391Q538 373 614 393L626 419Q545 437 448 415Z" fill="#f0ead8" stroke="#c9b99a" stroke-width="4"/>
+            </g>
+            <g transform="translate(114 372) rotate(-12)">
+              <path d="M0 16Q35 0 71 16V35Q35 48 0 35Z" fill="#f4e3ba" stroke="#bda37d" stroke-width="3"/>
+              <path d="M13 18Q34 25 58 18" fill="none" stroke="#d7c299" stroke-width="3"/>
+            </g>
+            <g transform="translate(354 386) rotate(10)">
+              <path d="M0 16Q33 0 66 16V35Q33 48 0 35Z" fill="#f4e3ba" stroke="#bda37d" stroke-width="3"/>
+              <path d="M13 18Q33 25 53 18" fill="none" stroke="#d7c299" stroke-width="3"/>
+            </g>
+          </svg>
+          <div class="photo-label">LOCAL FLAVORS<br>OF FUNABASHI</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="visit-band" id="visit">
+      <div class="wrap visit-inner">
+        <div>
+          <div class="eyebrow">YOUR NEXT DAY OUT</div>
+          <h2>次のおでかけは、船橋へ。</h2>
+          <p>三番瀬の自然や公園、地元のおいしいもの。船橋の公式情報はこちら。</p>
+        </div>
+        <a class="button-outline" href="https://www.city.funabashi.lg.jp/" target="_blank" rel="noopener noreferrer">船橋市公式サイト <span>↗</span></a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div class="footer-main">
+        <a class="brand footer-brand" href="#top" aria-label="船橋市のいいところ トップ">
+          <span class="brand-mark">船</span>
+          <span class="brand-name">船橋<span class="brand-sub">FUNABASHI CITY GUIDE</span></span>
+        </a>
+        <nav class="footer-nav" aria-label="フッターメニュー">
+          <a href="#about">船橋のこと</a>
+          <a href="#spots">見どころ</a>
+          <a href="#town">まちの寄り道</a>
+          <a href="#season">船橋の味</a>
+          <a href="#visit">おでかけ情報</a>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <span>FUNABASHI CITY GUIDE · UNOFFICIAL</span>
+        <span>船橋市の魅力を紹介する非公式サイトです。掲載イラストはオリジナルです。</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const menuButton = document.querySelector(".menu-toggle");
+    const navigation = document.querySelector("#primary-nav");
+
+    menuButton.addEventListener("click", () => {
+      const isOpen = menuButton.getAttribute("aria-expanded") === "true";
+      menuButton.setAttribute("aria-expanded", String(!isOpen));
+      menuButton.setAttribute("aria-label", isOpen ? "メニューを開く" : "メニューを閉じる");
+      navigation.classList.toggle("is-open", !isOpen);
+    });
+
+    navigation.addEventListener("click", (event) => {
+      if (event.target.closest("a")) {
+        menuButton.setAttribute("aria-expanded", "false");
+        menuButton.setAttribute("aria-label", "メニューを開く");
+        navigation.classList.remove("is-open");
+      }
+    });
+  </script>
+</body>
+</html>
